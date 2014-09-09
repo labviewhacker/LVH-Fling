@@ -14,7 +14,7 @@
 *  Written By: Sam Kristoff
 *  See https://github.com/samkristoff/LVH-Fling
 ********************************************************************************************************************/
-require_once  dirname(__FILE__) . '/../../../resources/aws/sqs.php';
+require_once  dirname(__FILE__) . '/../../../resources/php/aws/sqs.php';
 //Default Values
 $waitTime = 2;
 $searchToken = '';

@@ -7,7 +7,7 @@
 *  See https://github.com/samkristoff/LVH-Fling
 ********************************************************************************************************************/
 
-require_once  dirname(__FILE__) . '/../config.php';
+require_once  dirname(__FILE__) . '/../../config.php';
 
 use Aws\Sqs\SqsClient;
 
