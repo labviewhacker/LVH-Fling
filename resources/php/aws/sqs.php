@@ -48,6 +48,32 @@ function GetSqsMessage($queueUrl, $waitTime, $searchToken)
 	return $msgObj[Body];
 }
 
+function CreateSqsQueue($name, $deliveryDelaySec, $maxSizeBytes, $retentionPeriodSec, $recWaitTimeSec, $visTimeoutSec)
+{
+	global $AwsSqsClient;
+	$result = $AwsSqsClient->createQueue(array(
+		'QueueName' => $name,
+		'Attributes' => array(
+			'DelaySeconds' => $deliveryDelaySec,
+			'MaximumMessageSize' => $maxSizeBytes,
+			'MessageRetentionPeriod' => $retentionPeriodSec,
+			'ReceiveMessageWaitTimeSeconds' => $recWaitTimeSec,
+			'VisibilityTimeout' => $visTimeoutSec
+		)
+	));
+	return $result->get('QueueUrl');
+}
+
+
+function DeleteSqsQueue($queueUrl)
+{
+	global $AwsSqsClient;
+	$result = $AwsSqsClient->deleteQueue(array(
+		'QueueUrl' => $queueUrl
+	));
+}
+
+
 /********************************************************************************************************************
 *  Helpers
 ********************************************************************************************************************/
